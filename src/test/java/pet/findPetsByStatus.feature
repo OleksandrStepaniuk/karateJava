@@ -2,10 +2,10 @@ Feature: /pet/findByStatus find pets by status
 
   Background:
     * url baseUrl
+    * configure headers = { 'Content-Type': 'application/json' }
 
   Scenario Outline: find pets by status
     Given path 'pet/findByStatus'
-    And header accept = 'application/json'
     And param status = <statusString>
     When method get
     Then status <responseCode>
@@ -17,7 +17,6 @@ Feature: /pet/findByStatus find pets by status
 
   Scenario Outline: find pets by status negative
     Given path 'pet/findByStatus'
-    And header accept = 'application/json'
     And param status = <statusString>
     When method get
     Then status <responseCode>
